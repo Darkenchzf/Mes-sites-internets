@@ -1,0 +1,311 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Anton', sans-serif;
+            color: #00ff9f;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 159, 0.03) 2px, rgba(0, 255, 159, 0.03) 4px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 5rem;
+            color: #00ff9f;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 
+                0 0 10px #00ff9f,
+                0 0 20px #00ff9f,
+                0 0 30px #00ff9f,
+                4px 4px 0 #ff006e,
+                8px 8px 0 #8338ec;
+            margin-bottom: 20px;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                transform: translate(0);
+            }
+            92% {
+                transform: translate(-2px, 2px);
+            }
+            94% {
+                transform: translate(2px, -2px);
+            }
+            96% {
+                transform: translate(-2px, -2px);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #ff006e;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px #ff006e;
+        }
+
+        .card {
+            background: rgba(26, 26, 46, 0.8);
+            border: 3px solid #00ff9f;
+            border-radius: 0;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 159, 0.3),
+                inset 0 0 20px rgba(0, 255, 159, 0.05);
+            transition: all 0.3s ease;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 10px 30px rgba(0, 255, 159, 0.5),
+                inset 0 0 30px rgba(0, 255, 159, 0.1);
+            border-color: #ff006e;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background: #ff006e;
+            box-shadow: 0 0 10px #ff006e;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #ff006e;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #ff006e;
+        }
+
+        p {
+            font-family: Arial, sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b8b8d1;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            border: 3px solid #00ff9f;
+            color: #00ff9f;
+            text-transform: uppercase;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #00ff9f;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .button:hover {
+            color: #0a0a0a;
+            box-shadow: 0 0 20px #00ff9f;
+        }
+
+        .button:hover::before {
+            left: 0;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background: #00ff9f;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: #ff006e;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background: #8338ec;
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+            border-radius: 50%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, -60px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-30px, -30px) rotate(270deg);
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .vinyl-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .vinyl {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, 
+                #1a1a1a 0%, 
+                #1a1a1a 15%, 
+                #2a2a2a 15%, 
+                #2a2a2a 17%, 
+                #1a1a1a 17%, 
+                #1a1a1a 30%, 
+                #2a2a2a 30%, 
+                #2a2a2a 32%, 
+                #1a1a1a 32%, 
+                #1a1a1a 45%, 
+                #0a0a0a 45%);
+            position: relative;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 159, 0.3),
+                inset 0 0 30px rgba(0, 0, 0, 0.8);
+            animation: spin 8s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        .vinyl::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff006e 0%, #8338ec 100%);
+            box-shadow: 0 0 10px #ff006e;
+        }
+
+        .vinyl::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #0a0a0a;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .member-name {
+            font-size: 1.8rem;
+            color: #00ff9f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #00ff9f;
+            font-family: 'Anton', sans-serif;
+        }
