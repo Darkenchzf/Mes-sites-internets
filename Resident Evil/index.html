@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resident Evil — Archives Umbrella</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--blood-red:#b91c1c;
+--dark-red:#7f1d1d;
+--umbr-black:#0a0a0a;
+--ash-gray:#1f1f1f;
+--steel-gray:#404040;
+--warning-yellow:#fbbf24;
+--fog-white:#e5e5e5;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Barlow Condensed',sans-serif;
+background:var(--umbr-black);
+color:var(--fog-white);
+overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+.bg-noise{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%, rgba(185,28,28,.15), transparent 50%),
+radial-gradient(circle at 80% 70%, rgba(127,29,29,.1), transparent 50%),
+linear-gradient(180deg,#000,#0f0f0f);
+z-index:-1;
+}
+
+/* ================= HEADER ================= */
+header{
+padding:2rem 5%;
+border-bottom:2px solid var(--blood-red);
+backdrop-filter:blur(10px);
+}
+
+.header-content{
+max-width:1400px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+h1{
+font-family:'Bebas Neue',sans-serif;
+font-size:3rem;
+letter-spacing:.15em;
+color:var(--blood-red);
+}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:2rem;
+}
+
+nav a{
+color:var(--fog-white);
+text-decoration:none;
+font-weight:600;
+letter-spacing:.1em;
+}
+
+nav a:hover{color:var(--blood-red)}
+
+/* ================= HERO ================= */
+.hero{
+height:85vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h2{
+font-family:'Teko',sans-serif;
+font-size:7rem;
+}
+
+.hero .subtitle{
+color:var(--blood-red);
+letter-spacing:.2em;
+margin-bottom:2rem;
+}
+
+.warning-banner{
+display:inline-block;
+padding:1rem 3rem;
+border:2px solid var(--warning-yellow);
+background:linear-gradient(135deg,var(--dark-red),var(--blood-red));
+font-family:'Bebas Neue';
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title{
+text-align:center;
+font-family:'Bebas Neue';
+font-size:4rem;
+color:var(--blood-red);
+margin-bottom:4rem;
+}
+
+/* ================= CREATORS SECTION ================= */
+.creators-section{
+padding:8rem 5%;
+max-width:1400px;
+margin:auto;
+background:rgba(15,15,15,.3);
+}
+
+.creators-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:3rem;
+margin-bottom:4rem;
+}
+
+.creator-card{
+padding:3rem;
+background:rgba(30,30,30,.7);
+border-left:4px solid var(--blood-red);
+transition:.3s;
+}
+
+.creator-card:hover{
+transform:translateX(10px);
+background:rgba(40,40,40,.8);
+}
+
+.creator-name{
+font-family:'Bebas Neue';
+font-size:2.5rem;
+color:var(--blood-red);
+margin-bottom:1rem;
+}
+
+.creator-role{
+color:var(--warning-yellow);
+font-weight:600;
+margin-bottom:1rem;
+letter-spacing:.1em;
+}
+
+.franchise-info{
+background:rgba(20,20,20,.8);
+padding:3rem;
+border:2px solid var(--steel-gray);
+margin-top:3rem;
+}
+
+.franchise-info h3{
+font-family:'Bebas Neue';
+font-size:2.5rem;
+color:var(--blood-red);
+margin-bottom:2rem;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:2rem;
+}
+
+.info-item{
+padding:1.5rem;
+background:rgba(40,40,40,.5);
+border-left:3px solid var(--blood-red);
+}
+
+.info-label{
+color:var(--warning-yellow);
+font-weight:700;
+margin-bottom:.5rem;
+letter-spacing:.1em;
+}
+
+/* ================= TIMELINE ================= */
+.timeline-section{
+padding:8rem 5%;
+max-width:1400px;
+margin:auto;
+}
+
+.timeline{
+position:relative;
+}
+
+.timeline::before{
+content:'';
+position:absolute;
+left:50%;
+top:0;
+bottom:0;
+width:2px;
+background:var(--blood-red);
+}
+
+.timeline-item{
+display:flex;
+margin-bottom:6rem;
+}
+
+.timeline-item:nth-child(odd){flex-direction:row-reverse}
+
+.timeline-content{
+width:45%;
+padding:2rem;
+background:rgba(30,30,30,.7);
+border-left:4px solid var(--blood-red);
+}
+
+.timeline-year{
+font-family:'Teko';
+font-size:3rem;
+color:var(--blood-red);
+}
+
+/* ================= GAMES ================= */
+.games-section{
+padding:8rem 5%;
+background:rgba(15,15,15,.5);
+}
+
+.games-grid{
+max-width:1400px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:3rem;
+}
+
+.game-card{
+background:#111;
+border:1px solid var(--steel-gray);
+transition:.4s;
+overflow:hidden;
+}
+
+.game-card:hover{
+transform:translateY(-10px);
+border-color:var(--blood-red);
+box-shadow:0 20px 60px rgba(185,28,28,.4);
+}
+
+.game-image{
+height:380px;
+position:relative;
+overflow:hidden;
+}
+
+.game-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s;
+}
+
+.game-card:hover img{
+transform:scale(1.1);
+filter:brightness(.6);
+}
+
+.game-overlay{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:'Bebas Neue';
+font-size:3rem;
+color:var(--blood-red);
+background:rgba(0,0,0,.6);
+}
+
+.game-info{
+padding:2rem;
+}
+
+.game-title{
+font-family:'Bebas Neue';
+font-size:2rem;
+}
+
+.game-year{
+color:var(--blood-red);
+margin-bottom:1rem;
+}
+
+/* ================= STATS ================= */
+.stats-section{
+padding:8rem 5%;
+max-width:1400px;
+margin:auto;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:3rem;
+}
+
+.stat-card{
+padding:3rem;
+text-align:center;
+border-top:4px solid var(--blood-red);
+background:rgba(30,30,30,.7);
+}
+
+.stat-number{
+font-family:'Teko';
+font-size:5rem;
+color:var(--blood-red);
+}
+
+/* ================= FOOTER ================= */
+footer{
+padding:4rem 5%;
+border-top:2px solid var(--blood-red);
+text-align:center;
+background:#080808;
+}
+
+.footer-logo{
+font-family:'Bebas Neue';
+font-size:2rem;
+color:var(--blood-red);
+margin-bottom:1rem;
+}
+
+.copyright-info{
+margin-top:2rem;
+padding-top:2rem;
+border-top:1px solid var(--steel-gray);
+}
+
+.copyright-info p{
+margin-bottom:.5rem;
+color:var(--steel-gray);
+font-size:.9rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+.timeline::before{left:0}
+.timeline-item{flex-direction:column!important}
+.timeline-content{width:100%;margin-left:2rem}
+h1{font-size:2rem}
+.hero h2{font-size:4rem}
+nav ul{flex-direction:column;gap:1rem}
+}
+</style>
+</head>
+
+<body>
+<div class="bg-noise"></div>
+
+<header>
+<div class="header-content">
+<h1>RESIDENT EVIL</h1>
+<nav>
+<ul>
+<li><a href="#creators">Créateurs</a></li>
+<li><a href="#timeline">Chronologie</a></li>
+<li><a href="#games">Jeux</a></li>
+<li><a href="#stats">Stats</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<h2>SURVIVAL HORROR</h2>
+<p class="subtitle">La saga culte</p>
+<div class="warning-banner">⚠ BIOHAZARD WARNING ⚠</div>
+</div>
+</section>
+
+<section id="creators" class="creators-section">
+<h2 class="section-title">Les Créateurs</h2>
+
+<div class="creators-grid">
+<div class="creator-card">
+<div class="creator-name">Shinji Mikami</div>
+<div class="creator-role">Créateur & Réalisateur</div>
+<p>Considéré comme le père du survival horror moderne, il a dirigé le premier Resident Evil (1996) et Resident Evil 4 (2005), révolutionnant le genre à deux reprises.</p>
+</div>
+
+<div class="creator-card">
+<div class="creator-name">Tokuro Fujiwara</div>
+<div class="creator-role">Producteur Original</div>
+<p>Producteur du premier opus, il a supervisé le développement initial et contribué à définir les bases du gameplay et de l'atmosphère de la série.</p>
+</div>
+
+<div class="creator-card">
+<div class="creator-name">Hideki Kamiya</div>
+<div class="creator-role">Réalisateur RE2</div>
+<p>A dirigé Resident Evil 2, l'un des épisodes les plus acclamés de la franchise, établissant de nouveaux standards pour la narration et le game design.</p>
+</div>
+
+<div class="creator-card">
+<div class="creator-name">Yoshiki Okamoto</div>
+<div class="creator-role">Producteur Exécutif</div>
+<p>Producteur exécutif de la série originale, il a joué un rôle clé dans le développement stratégique de la franchise chez Capcom.</p>
+</div>
+</div>
+
+<div class="franchise-info">
+<h3>Informations sur la Licence</h3>
+<div class="info-grid">
+<div class="info-item">
+<div class="info-label">Propriétaire</div>
+<p>Capcom Co., Ltd.</p>
+</div>
+
+<div class="info-item">
+<div class="info-label">Développeur</div>
+<p>Capcom (principalement)</p>
+</div>
+
+<div class="info-item">
+<div class="info-label">Premier Jeu</div>
+<p>Resident Evil (22 mars 1996)</p>
+</div>
+
+<div class="info-item">
+<div class="info-label">Dernier Jeu</div>
+<p>Resident Evil 4 Remake (24 mars 2023)</p>
+</div>
+
+<div class="info-item">
+<div class="info-label">Genres</div>
+<p>Survival Horror, Action-Aventure, TPS</p>
+</div>
+
+<div class="info-item">
+<div class="info-label">Plateformes</div>
+<p>Multi-plateformes (PlayStation, Xbox, PC, Nintendo)</p>
+</div>
+
+<div class="info-item">
+<div class="info-label">Médias Dérivés</div>
+<p>Films, séries, mangas, romans</p>
+</div>
+
+<div class="info-item">
+<div class="info-label">Marque Japonaise</div>
+<p>Biohazard (バイオハザード)</p>
+</div>
+</div>
+
+<div style="margin-top:2rem; padding:1.5rem; background:rgba(185,28,28,.1); border-left:3px solid var(--blood-red);">
+<p><strong>Note :</strong> Resident Evil est une marque déposée de Capcom Co., Ltd. Tous les jeux, personnages, et contenus associés sont la propriété de Capcom. La série a établi de nombreux standards du genre survival horror et continue d'influencer l'industrie du jeu vidéo.</p>
+</div>
+</div>
+</section>
+
+<section id="timeline" class="timeline-section">
+<h2 class="section-title">Chronologie</h2>
+
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-content">
+<div class="timeline-year">1996</div>
+<p>Naissance du survival horror moderne avec le premier Resident Evil sur PlayStation.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<div class="timeline-year">1998</div>
+<p>Chute de Raccoon City avec Resident Evil 2, succès critique et commercial.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<div class="timeline-year">2005</div>
+<p>Révolution du gameplay avec RE4 et sa caméra par-dessus l'épaule.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<div class="timeline-year">2017</div>
+<p>Retour à l'horreur pure avec RE7 et la vue à la première personne.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<div class="timeline-year">2019-2023</div>
+<p>Ère des remakes avec RE2, RE3 et RE4 modernisés pour une nouvelle génération.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="games" class="games-section">
+<h2 class="section-title">Jeux Principaux</h2>
+
+<div class="games-grid">
+
+<div class="game-card">
+<div class="game-image">
+<img src="RE1.jpg" alt="Resident Evil">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil</div>
+<div class="game-year">1996</div>
+<p>L'équipe S.T.A.R.S. explore le manoir Spencer et découvre les horreurs du virus T.</p>
+</div>
+</div>
+
+<div class="game-card">
+<div class="game-image">
+  <img src="RE2.jpg" alt="Resident Evil 2">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil 2</div>
+<div class="game-year">1998</div>
+<p>Leon S. Kennedy et Claire Redfield survivent à l'épidémie qui ravage Raccoon City.</p>
+</div>
+</div>
+
+<div class="game-card">
+<div class="game-image">
+<img src="RE3.jpg" alt="Resident Evil 3">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil 3: Nemesis</div>
+<div class="game-year">1999</div>
+<p>Jill Valentine fuit Raccoon City, traquée par Nemesis.</p>
+</div>
+</div>
+
+<div class="game-card">
+<div class="game-image">
+<img src="RE4.jpg" alt="Resident Evil 4">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil 4</div>
+<div class="game-year">2005</div>
+<p>Leon S. Kennedy infiltre un village isolé en Europe.</p>
+</div>
+</div>
+
+<div class="game-card">
+<div class="game-image">
+<img src="RE5.jpg" alt="Resident Evil 5">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil 5</div>
+<div class="game-year">2009</div>
+<p>Chris Redfield affronte une menace bio-terroriste en Afrique.</p>
+</div>
+</div>
+
+<div class="game-card">
+<div class="game-image">
+<img src="RE6.jpg" alt="Resident Evil 6">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil 6</div>
+<div class="game-year">2012</div>
+<p>Une épidémie mondiale mêle action et horreur.</p>
+</div>
+</div>
+
+<div class="game-card">
+<div class="game-image">
+<img src="RE7.jpg" alt="Resident Evil 7">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil 7: Biohazard</div>
+<div class="game-year">2017</div>
+<p>Ethan Winters explore la demeure cauchemardesque des Baker.</p>
+</div>
+</div>
+
+<div class="game-card">
+<div class="game-image">
+<img src="RE8.jpg" alt="Resident Evil Village">
+</div>
+<div class="game-info">
+<div class="game-title">Resident Evil Village</div>
+<div class="game-year">2021</div>
+<p>Ethan affronte les horreurs d'un village maudit.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="stats" class="stats-section">
+<h2 class="section-title">Impact</h2>
+
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-number">140M+</div>Copies vendues</div>
+<div class="stat-card"><div class="stat-number">28+</div>Années</div>
+<div class="stat-card"><div class="stat-number">40+</div>Jeux</div>
+<div class="stat-card"><div class="stat-number">7</div>Films</div>
+</div>
+</section>
+
+<footer>
+<div class="footer-logo">UMBRELLA ARCHIVES</div>
+<p>Site fan non officiel</p>
+
+<div class="copyright-info">
+<p><strong>Resident Evil™</strong> et <strong>Biohazard™</strong> sont des marques déposées de <strong>Capcom Co., Ltd.</strong></p>
+<p>Tous les jeux, personnages, logos et contenus associés sont la propriété exclusive de Capcom.</p>
+<p>Ce site est un projet de fan non officiel créé à des fins éducatives et d'appréciation de la franchise.</p>
+<p>Aucune affiliation avec Capcom Co., Ltd.</p>
+<p>© 2024 - Créé par un fan passionné</p>
+</div>
+</footer>
+
+</body>
+</html>
