@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five Nights at Freddy's - La Licence Complète</title>
+  <body>
+     <style>
+        :root {
+            --fnaf-dark: #0a0a0a;
+            --fnaf-black: #1a1a1a;
+            --fnaf-purple: #4a1a4a;
+            --fnaf-purple-light: #6b2d6b;
+            --fnaf-gold: #d4af37;
+            --fnaf-gold-dark: #b8941f;
+            --fnaf-red: #8b0000;
+            --fnaf-red-bright: #dc143c;
+            --fnaf-green: #00ff00;
+            --fnaf-blue: #1e3a5f;
+            --fnaf-gray: #2d2d2d;
+            --fnaf-gray-light: #4a4a4a;
+            --fnaf-beige: #d4c4a8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--fnaf-black);
+            color: var(--fnaf-beige);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Effet CRT */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9999;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.95; }
+            50% { opacity: 1; }
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--fnaf-gray);
+            border-bottom: 3px solid var(--fnaf-gold);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: Impact, sans-serif;
+            font-size: 1.8rem;
+            color: var(--fnaf-gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--fnaf-beige);
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: var(--fnaf-green);
+            border-color: var(--fnaf-green);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--fnaf-purple) 0%, var(--fnaf-black) 100%);
+            border: 3px solid var(--fnaf-purple-light);
+            border-radius: 10px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent, rgba(0, 255, 0, 0.05), transparent);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .hero h1 {
+            font-family: Impact, sans-serif;
+            font-size: 3.5rem;
+            color: var(--fnaf-gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 4px 4px 0 rgba(0, 0, 0, 0.8);
+            animation: glitchTitle 5s infinite;
+        }
+
+        @keyframes glitchTitle {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--fnaf-green);
+            text-shadow: 0 0 10px var(--fnaf-green);
+        }
+
+        /* Section */
+        .section {
+            background-color: var(--fnaf-gray);
+            border: 3px solid var(--fnaf-gray-light);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .section:hover {
+            border-color: var(--fnaf-gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .section-title {
+            font-family: Impact, sans-serif;
+            font-size: 2.5rem;
+            color: var(--fnaf-gold);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--fnaf-green), var(--fnaf-gold), var(--fnaf-red-bright));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -47px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--fnaf-gold);
+            border-radius: 50%;
+            border: 3px solid var(--fnaf-black);
+            box-shadow: 0 0 10px var(--fnaf-gold);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.3; }
+        }
+
+        .timeline-year {
+            font-family: Impact, sans-serif;
+            font-size: 1.5rem;
+            color: var(--fnaf-green);
+            text-shadow: 0 0 10px var(--fnaf-green);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content {
+            background-color: var(--fnaf-black);
+            padding: 20px;
+            border-left: 3px solid var(--fnaf-gold);
+            border-radius: 5px;
+        }
+
+        .timeline-content h3 {
+            color: var(--fnaf-gold);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--fnaf-black), var(--fnaf-gray));
+            border: 3px solid var(--fnaf-gold);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+            border-color: var(--fnaf-green);
+        }
+
+        .stat-number {
+            font-family: Impact, sans-serif;
+            font-size: 3rem;
+            color: var(--fnaf-gold);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--fnaf-beige);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .game-card {
+            background-color: var(--fnaf-black);
+            border: 3px solid var(--fnaf-gray-light);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .game-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 255, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .game-card:hover {
+            border-color: var(--fnaf-green);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            transform: scale(1.05);
+        }
+
+        .game-card:hover::after {
+            opacity: 1;
+        }
+
+        .game-title {
+            font-family: Impact, sans-serif;
+            font-size: 1.3rem;
+            color: var(--fnaf-gold);
+            margin-bottom: 10px;
+        }
+
+        .game-year {
+            color: var(--fnaf-green);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .game-description {
+            color: var(--fnaf-beige);
+            line-height: 1.8;
+        }
+
+        /* Interactive Button */
+        .interactive-btn {
+            background: linear-gradient(135deg, var(--fnaf-blue), var(--fnaf-purple));
+            color: var(--fnaf-green);
+            border: 3px solid var(--fnaf-green);
+            padding: 15px 40px;
+            font-family: Impact, sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 5px;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            margin: 20px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(0, 255, 0, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .interactive-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .interactive-btn:hover {
+            background: var(--fnaf-green);
+            color: var(--fnaf-black);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+            transform: translateY(-3px);
+        }
+
+        /* Box Office Stats */
+        .box-office {
+            background: linear-gradient(135deg, var(--fnaf-red), var(--fnaf-black));
+            border: 3px solid var(--fnaf-red-bright);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .box-office h3 {
+            font-family: Impact, sans-serif;
+            font-size: 2rem;
+            color: var(--fnaf-gold);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .box-office-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-left: 4px solid var(--fnaf-gold);
+            border-radius: 5px;
+        }
+
+        .box-office-stat span:first-child {
+            color: var(--fnaf-beige);
+            font-weight: bold;
+        }
+
+        .box-office-stat span:last-child {
+            color: var(--fnaf-green);
+            font-family: Impact, sans-serif;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--fnaf-gray);
+            border-top: 3px solid var(--fnaf-gold);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            color: var(--fnaf-beige);
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: var(--fnaf-gold);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--fnaf-green);
+            text-shadow: 0 0 10px var(--fnaf-green);
+        }
+
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--fnaf-purple), var(--fnaf-black));
+            border: 5px solid var(--fnaf-gold);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--fnaf-red-bright);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+            color: var(--fnaf-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .games-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Easter Egg - Animatronics appear */
+        .easter-egg {
+            position: fixed;
+            bottom: -200px;
+            right: 50px;
+            font-size: 8rem;
+            transition: all 0.5s;
+            z-index: 999;
+            cursor: pointer;
+            animation: peek 0.5s;
+        }
+
+        @keyframes peek {
+            0% { bottom: -200px; }
+            50% { bottom: 20px; }
+            100% { bottom: -200px; }
+        }
+    </style>
+<nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">🐻 FIVE NIGHTS AT FREDDY'S</div>
+            <ul class="nav-links">
+                <li><a href="#histoire">Histoire</a></li>
+                <li><a href="#createur">Créateur</a></li>
+                <li><a href="#jeux">Jeux</a></li>
+                <li><a href="#film">Film</a></li>
+                <li><a href="#stats">Statistiques</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🍕 FREDDY FAZBEAR'S PIZZA 🍕</h1>
+            <p>LA FRANCHISE D'HORREUR QUI A RÉVOLUTIONNÉ LE GENRE</p>
+        </div>
+
+        <!-- Histoire de la Licence -->
+        <section id="histoire" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">📖</span>
+                L'HISTOIRE DE LA LICENCE
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-content">
+                        <h3>🎮 Naissance de FNAF</h3>
+                        <p>Le 8 août 2014, Scott Cawthon publie Five Nights at Freddy's sur Steam après avoir été accepté sur Greenlight. Le jeu devient instantanément viral grâce aux let's plays sur YouTube, notamment ceux de Markiplier.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2014-2015</div>
+                    <div class="timeline-content">
+                        <h3>🚀 L'Explosion de la Saga</h3>
+                        <p>Scott Cawthon sort rapidement FNAF 2 (novembre 2014), FNAF 3 (mars 2015) et FNAF 4 (juillet 2015). La franchise devient un phénomène culturel mondial avec des millions de fans.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2015-2021</div>
+                    <div class="timeline-content">
+                        <h3>📚 Expansion Transmedia</h3>
+                        <p>La licence s'étend avec des romans (The Silver Eyes, The Twisted Ones), des spin-offs (FNAF World, Ultimate Custom Night), et des livres Fazbear Frights. Scott continue à développer de nouveaux jeux incluant Sister Location, Pizzeria Simulator, Help Wanted et Security Breach.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>👋 Retraite de Scott Cawthon</h3>
+                        <p>Le 17 juin 2021, Scott Cawthon annonce sa retraite du développement actif de jeux pour se concentrer sur sa famille (six enfants). Il reste impliqué dans la supervision de la franchise mais confie le développement à d'autres studios comme Steel Wool Studios.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>🎬 Triomphe Cinématographique</h3>
+                        <p>Le film Five Nights at Freddy's sort le 27 octobre 2023, produit par Blumhouse et Universal. Malgré des critiques mitigées (33% sur Rotten Tomatoes), le film explose au box-office avec 297,2 millions de dollars mondialement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scott Cawthon -->
+        <section id="createur" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">👨‍💻</span>
+                SCOTT CAWTHON - LE CRÉATEUR
+            </h2>
+            <div style="background-color: var(--fnaf-black); padding: 30px; border-left: 5px solid var(--fnaf-gold); border-radius: 5px;">
+                <h3 style="color: var(--fnaf-gold); margin-bottom: 15px; font-size: 1.5rem;">📋 Informations</h3>
+                <p><strong>Nom complet:</strong> Scott Braden Cawthon</p>
+                <p><strong>Date de naissance:</strong> 4 juin 1978 (Houston, Texas, États-Unis)</p>
+                <p><strong>Profession:</strong> Développeur de jeux vidéo indépendant, animateur, écrivain, producteur</p>
+                <p><strong>Formation:</strong> Art Institute of Houston (1996)</p>
+                <p><strong>Résidence:</strong> Salado, Texas avec sa femme et ses six enfants</p>
+                
+                <h3 style="color: var(--fnaf-gold); margin: 30px 0 15px 0; font-size: 1.5rem;">🎯 Le Parcours</h3>
+                <p><strong>Années 90-2000:</strong> Scott commence sa carrière en créant des jeux d'aventure chrétiens et des animations religieuses (Pilgrim's Progress, The Desolate Hope). Il fait partie de Hope Animation, un projet d'animateurs chrétiens.</p>
+                
+                <p style="margin-top: 15px;"><strong>2012:</strong> Son jeu Chipper & Sons Lumber Co. reçoit des critiques négatives pour ses personnages qui ressemblent à des "animatroniques effrayants". Scott tombe en dépression et envisage d'abandonner le développement de jeux.</p>
+                
+                <p style="margin-top: 15px;"><strong>Le Déclic:</strong> Au lieu d'abandonner, Scott décide d'utiliser ces critiques à son avantage et crée intentionnellement un jeu d'horreur avec des animatroniques. C'est la naissance de Five Nights at Freddy's !</p>
+                
+                <h3 style="color: var(--fnaf-gold); margin: 30px 0 15px 0; font-size: 1.5rem;">🏆 L'Héritage</h3>
+                <p>Scott Cawthon a créé l'une des franchises d'horreur les plus influentes de tous les temps. Il a développé environ 80 jeux et animé plus de 30 courts-métrages avant FNAF. En 2015, il fonde officiellement ScottGames, LLC. En 2017, il crée Scott Cawthon Productions pour la production du film.</p>
+                
+                <p style="margin-top: 15px;"><strong>Philanthropie:</strong> Scott est connu pour sa générosité envers la communauté FNAF et pour ses nombreux dons de charité, notamment pour St. Jude Children's Research Hospital.</p>
+            </div>
+
+            <button class="interactive-btn" onclick="showScottQuote()">💬 Citation Inspirante</button>
+        </section>
+
+        <!-- Les Jeux -->
+        <section id="jeux" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🎮</span>
+                LES JEUX PRINCIPAUX
+            </h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-title">Five Nights at Freddy's</div>
+                    <div class="game-year">📅 2014</div>
+                    <p class="game-description">Le jeu qui a tout commencé. Vous êtes Mike Schmidt, gardien de nuit à la Freddy Fazbear's Pizza. Surveillez les animatroniques via les caméras et survivez 5 nuits.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">FNAF 2</div>
+                    <div class="game-year">📅 2014</div>
+                    <p class="game-description">Un préquel se déroulant en 1987. Nouveaux animatroniques "Toy" et mécaniques de gameplay améliorées avec le masque de Freddy.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">FNAF 3</div>
+                    <div class="game-year">📅 2015</div>
+                    <p class="game-description">30 ans après la fermeture. Fazbear's Fright, une attraction d'horreur avec un seul animatronique actif : Springtrap.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">FNAF 4</div>
+                    <div class="game-year">📅 2015</div>
+                    <p class="game-description">Un changement radical : vous êtes un enfant terrifié dans sa chambre, confronté aux versions cauchemar des animatroniques.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">Sister Location</div>
+                    <div class="game-year">📅 2016</div>
+                    <p class="game-description">Introduction de nouveaux personnages (Circus Baby, Ballora) dans un bunker souterrain avec une histoire plus cinématique.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">Pizzeria Simulator</div>
+                    <div class="game-year">📅 2017</div>
+                    <p class="game-description">Gérez votre propre pizzeria le jour, survivez aux animatroniques la nuit. La conclusion narrative de la saga originale.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">Ultimate Custom Night</div>
+                    <div class="game-year">📅 2018</div>
+                    <p class="game-description">Plus de 50 animatroniques personnalisables pour créer votre propre cauchemar. Le défi ultime pour les fans hardcore.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">Help Wanted (VR)</div>
+                    <div class="game-year">📅 2019</div>
+                    <p class="game-description">L'horreur de FNAF en réalité virtuelle. Revisite les moments classiques avec une nouvelle dimension de terreur.</p>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-title">Security Breach</div>
+                    <div class="game-year">📅 2021</div>
+                    <p class="game-description">Le plus ambitieux : exploration libre dans un méga centre commercial, avec Glamrock Freddy comme allié.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Le Film -->
+        <section id="film" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🎬</span>
+                LE FILM (2023) - UN SUCCÈS PHÉNOMÉNAL
+            </h2>
+            
+            <div style="background: linear-gradient(135deg, var(--fnaf-black), var(--fnaf-red)); padding: 30px; border-radius: 10px; border: 3px solid var(--fnaf-gold);">
+                <h3 style="color: var(--fnaf-gold); font-size: 1.8rem; margin-bottom: 20px; text-align: center;">🏆 INFORMATIONS DU FILM</h3>
+                
+                <p><strong>Réalisatrice:</strong> Emma Tammi</p>
+                <p><strong>Production:</strong> Blumhouse Productions & Universal Pictures</p>
+                <p><strong>Sortie:</strong> 27 octobre 2023 (USA) / 8 novembre 2023 (France)</p>
+                <p><strong>Budget:</strong> 20 millions de dollars</p>
+                <p><strong>Acteur principal:</strong> Josh Hutcherson (Mike Schmidt)</p>
+                <p><strong>Distribution:</strong> Cinéma + Peacock (streaming simultané)</p>
+            </div>
+
+            <div class="box-office">
+                <h3>💰 RÉSULTATS BOX-OFFICE RECORD</h3>
+                
+                <div class="box-office-stat">
+                    <span>🌎 Box-Office Mondial Total</span>
+                    <span>297,2 M$</span>
+                </div>
+
+                <div class="box-office-stat">
+                    <span>🇺🇸 États-Unis & Canada</span>
+                    <span>137,2 M$</span>
+                </div>
+
+                <div class="box-office-stat">
+                    <span>🌍 International</span>
+                    <span>159,9 M$</span>
+                </div>
+
+                <div class="box-office-stat">
+                    <span>🎃 Week-end d'ouverture (USA)</span>
+                    <span>80 M$</span>
+                </div>
+
+                <div class="box-office-stat">
+                    <span>🇫🇷 Entrées France (1ère semaine)</span>
+                    <span>493 993</span>
+                </div>
+
+                <div class="box-office-stat">
+                    <span>🇫🇷 Total entrées France</span>
+                    <span>841 452</span>
+                </div>
+
+                <div style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px; margin-top: 20px; border: 3px solid var(--fnaf-gold);">
+                    <h4 style="color: var(--fnaf-gold); text-align: center; margin-bottom: 15px;">🏆 RECORDS BATTUS</h4>
+                    <p>✅ Film d'horreur #1 de 2023 (devant Scream VI, The Nun II, M3GAN)</p>
+                    <p>✅ Plus gros démarrage pour Blumhouse (devant Halloween 2018)</p>
+                    <p>✅ Meilleur week-end Halloween de tous les temps</p>
+                    <p>✅ 2ème plus gros démarrage pour une adaptation de jeu vidéo (après Super Mario Bros)</p>
+                    <p>✅ Plus gros démarrage pour une sortie simultanée streaming/cinéma (égalité avec Black Widow)</p>
+                    <p>✅ Film de Blumhouse le plus rentable de tous les temps (devant Split)</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <p style="font-size: 1.2rem; color: var(--fnaf-green); margin-bottom: 15px;"><strong>🎭 Réception Critique vs Public</strong></p>
+                <p>🍅 <strong>Rotten Tomatoes:</strong> 33% (critiques) / A- CinemaScore (public)</p>
+                <p style="margin-top: 15px;">Malgré les critiques mitigées des médias, le film a été un énorme succès auprès des fans et du public !</p>
+                <p style="margin-top: 20px; color: var(--fnaf-gold); font-size: 1.1rem;">🎬 <strong>Suite confirmée en 2024 !</strong></p>
+            </div>
+        </section>
+
+        <!-- Statistiques -->
+        <section id="stats" class="section">
+            <h2 class="section-title">
+                <span class="section-icon">📊</span>
+                STATISTIQUES DE LA FRANCHISE
+            </h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card" onclick="animateStat(this)">
+                    <div class="stat-number">11+</div>
+                    <div class="stat-label">Jeux Principaux</div>
+                </div>
+
+                <div class="stat-card" onclick="animateStat(this)">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Spin-offs</div>
+                </div>
+
+                <div class="stat-card" onclick="animateStat(this)">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Romans & Livres</div>
+                </div>
+
+                <div class="stat-card" onclick="animateStat(this)">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Années d'Existence</div>
+                </div>
+
+                <div class="stat-card" onclick="animateStat(this)">
+                    <div class="stat-number">297M$</div>
+                    <div class="stat-label">Box-Office Film</div>
+                </div>
+
+                <div class="stat-card" onclick="animateStat(this)">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Jumpscares Subis</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <button class="interactive-btn" onclick="showFunFacts()">🎯 ANECDOTES SECRÈTES</button>
+                <button class="interactive-btn" onclick="triggerEasterEgg()">🐻 EASTER EGG</button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p style="font-size: 1.5rem; color: var(--fnaf-gold); margin-bottom: 20px;">🍕 FREDDY FAZBEAR'S PIZZA 🍕</p>
+        <p>Five Nights at Freddy's © Scott Cawthon</p>
+        <p>Site créé avec ❤️ par un fan de la franchise</p>
+        <p style="margin-top: 20px; color: var(--fnaf-green);">⚠️ "It's me." - Golden Freddy</p>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modal-text"></div>
+        </div>
+    </div>
+
+    <script>
+        // Animation des statistiques au clic
+        function animateStat(card) {
+            card.style.transform = 'scale(1.1) rotate(5deg)';
+            setTimeout(() => {
+                card.style.transform = 'translateY(-10px)';
+            }, 300);
+        }
+
+        // Citation de Scott Cawthon
+        function showScottQuote() {
+            const quotes = [
+                "J'ai pensé que j'avais gâché ma vie en devenant développeur de jeux. Soit Dieu n'existait pas, soit Dieu me détestait. Puis j'ai décidé de créer quelque chose d'intentionnellement effrayant.",
+                "Je veux que ce film soit quelque chose dont je suis fier et que les fans soient excités de voir.",
+                "Les critiques disaient que mes personnages ressemblaient à des animatroniques effrayants. J'ai pensé : 'Je parie que je peux faire quelque chose de bien plus effrayant que ça.'"
+            ];
+            
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            showModal(`
+                <h2 style="color: var(--fnaf-gold); margin-bottom: 20px;">💬 Citation de Scott Cawthon</h2>
+                <p style="font-size: 1.2rem; font-style: italic; line-height: 1.8;">"${randomQuote}"</p>
+                <p style="margin-top: 30px; color: var(--fnaf-green); text-align: right;">- Scott Cawthon</p>
+            `);
+        }
+
+        // Anecdotes secrètes
+        function showFunFacts() {
+            showModal(`
+                <h2 style="color: var(--fnaf-gold); margin-bottom: 20px;">🎯 ANECDOTES FNAF</h2>
+                <div style="text-align: left;">
+                    <p style="margin-bottom: 15px;">🐻 <strong>Inspiration:</strong> Scott s'est inspiré de Chuck E. Cheese et ShowBiz Pizza, des restaurants avec des animatroniques dans les années 80-90.</p>
+                    
+                    <p style="margin-bottom: 15px;">⚡ <strong>Développement rapide:</strong> Le premier FNAF a été développé en seulement 6 mois ! Scott sortait les suites en quelques mois.</p>
+                    
+                    <p style="margin-bottom: 15px;">👻 <strong>Lore complexe:</strong> L'histoire de FNAF est intentionnellement mystérieuse. Scott cachait des indices dans les jeux pour que les fans théorisent.</p>
+                    
+                    <p style="margin-bottom: 15px;">🎮 <strong>Clickteam Fusion:</strong> Tous les jeux FNAF ont été créés avec ce moteur de jeu relativement simple !</p>
+                    
+                    <p style="margin-bottom: 15px;">📱 <strong>Success mobile:</strong> FNAF est devenu l'une des franchises mobiles les plus rentables avec des millions de téléchargements.</p>
+                    
+                    <p style="margin-bottom: 15px;">🏆 <strong>Markiplier:</strong> Le YouTuber Markiplier est crédité d'avoir rendu FNAF viral avec ses vidéos de réaction.</p>
+                    
+                    <p style="margin-bottom: 15px;">💰 <strong>Budget vs Gains du film:</strong> Avec un budget de 20M$, le film a rapporté 297M$ - soit près de 15 fois son coût !</p>
+                </div>
+            `);
+        }
+
+        // Easter Egg
+        function triggerEasterEgg() {
+            const freddy = document.createElement('div');
+            freddy.className = 'easter-egg';
+            freddy.innerHTML = '🐻';
+            freddy.onclick = () => {
+                showModal(`
+                    <h2 style="color: var(--fnaf-red-bright); font-size: 3rem; text-align: center; animation: shake 0.5s infinite;">⚠️ IT'S ME ⚠️</h2>
+                    <p style="text-align: center; margin-top: 30px; font-size: 1.5rem;">Tu as trouvé Golden Freddy !</p>
+                `);
+                freddy.remove();
+            };
+            document.body.appendChild(freddy);
+            
+            setTimeout(() => {
+                freddy.remove();
+            }, 3000);
+        }
+
+        // Modal functions
+        function showModal(content) {
+            const modal = document.getElementById('modal');
+            const modalText = document.getElementById('modal-text');
+            modalText.innerHTML = content;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        // Fermer le modal en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Smooth scroll pour la navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Message de bienvenue
+        setTimeout(() => {
+            console.log('%c🐻 Bienvenue à Freddy Fazbear\'s Pizza! 🍕', 'color: #d4af37; font-size: 20px; font-weight: bold;');
+            console.log('%cAttention aux animatroniques... 👀', 'color: #00ff00; font-size: 16px;');
+        }, 1000);
+
+        // Easter Egg aléatoire
+        setInterval(() => {
+            if (Math.random() > 0.98) {
+                const messages = [
+                    "Tu as entendu quelque chose ?",
+                    "Freddy se rapproche...",
+                    "La lumière clignote...",
+                    "5 AM - Encore une heure à tenir !"
+                ];
+                console.log('%c⚠️ ' + messages[Math.floor(Math.random() * messages.length)], 'color: #ff0000; font-size: 14px;');
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
